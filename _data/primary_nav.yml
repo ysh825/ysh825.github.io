@@ -1,15 +1,15 @@
-- title: Home
+- title: 主页
   link: /
   show_on_mobile: true
-- title: Docs
+- title: 文档
   link: /docs/
   show_on_mobile: true
-- title: Resources
+- title: 资源
   link: /resources/
   show_on_mobile: true
-- title: Showcase
+- title: 实例
   link: /showcase/
   show_on_mobile: false
-- title: News
+- title: 新闻
   link: /news/
   show_on_mobile: true
