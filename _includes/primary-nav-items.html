@@ -1,4 +1,4 @@
-﻿>
+<ul>
   {% for p in site.data.primary_nav %}
   <li
     {%- if p.link == '/' -%}
@@ -9,5 +9,5 @@
   >
     <a href="{{ p.link }}">{{ p.title }}</a>
   </li>
-  {%- endfor %}
+  {% endfor %}
 </ul>
