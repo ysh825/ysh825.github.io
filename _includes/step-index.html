@@ -1,17 +1,17 @@
-{% assign docs = site.docs | where_exp: "doc", "doc.url contains '/step-by-step/'" %}
+﻿{% assign docs = site.docs | where_exp: "doc", "doc.url contains '/step-by-step/'" %}
 
 {% for tutorial in tutorials %}
   {% assign tutorial_url = tutorial | prepend:"/tutorials/" | append:"/" %}
   {% if tutorial_url == page.url %}
     <div class="section-nav">
       <div class="left align-right">
-          {% if forloop.first %}
+          {%- if forloop.first -%}
             <span class="prev disabled">Back</span>
-          {% else %}
+          {%- else -%}
             {% assign previous = forloop.index0 | minus: 1 %}
             {% assign previous_page = tutorials[previous] | prepend:"/tutorials/" | append:"/" %}
-            <a href="{{ previous_page }}" class="prev">Back</a>
-          {% endif %}
+            <a href="{{ previous_page }}" class="prev">上一页</a>
+          {%- endif %}
       </div>
       <div class="right align-left">
           {% if forloop.last %}
@@ -19,7 +19,7 @@
           {% else %}
             {% assign next = forloop.index0 | plus: 1 %}
             {% assign next_page = tutorials[next] | prepend:"/tutorials/" | append:"/" %}
-            <a href="{{ next_page }}" class="next">Next</a>
+            <a href="{{ next_page }}" class="next">下一页</a>
           {% endif %}
       </div>
     </div>
@@ -33,20 +33,20 @@
   {% if doc.url == page.url %}
     <div class="section-nav">
       <div class="left align-right">
-          {% if forloop.first %}
+          {%- if forloop.first -%}
             <span class="prev disabled">Back</span>
-          {% else %}
+          {%- else -%}
             {% assign previous = forloop.index0 | minus: 1 %}
-            <a href="{{ docs[previous].url }}" class="prev">Back</a>
-          {% endif %}
+            <a href="{{ docs[previous].url }}" class="prev">上一页</a>
+          {%- endif %}
       </div>
       <div class="right align-left">
-          {% if forloop.last %}
+          {%- if forloop.last -%}
             <span class="next disabled">Next</span>
-          {% else %}
+          {%- else -%}
             {% assign next = forloop.index0 | plus: 1 %}
-            <a href="{{ docs[next].url }}" class="next">Next</a>
-          {% endif %}
+            <a href="{{ docs[next].url }}" class="next">下一页</a>
+          {%- endif %}
       </div>
     </div>
     <div class="clear"></div>
@@ -55,11 +55,9 @@
 {% endfor %}
 
 <ol class="step-nav">
-  {% for step in docs %}
+  {%- for step in docs -%}
     <li {% if step.url == page.url %}class="current"{% endif %}>
-      <a href="{{ step.url }}">
-        {{ step.title }}
-      </a>
+      <a href="{{ step.url }}">{{ step.title }}</a>
     </li>
-  {% endfor %}
+  {%- endfor %}
 </ol>
