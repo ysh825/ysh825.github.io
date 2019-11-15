@@ -55,7 +55,7 @@
 {% endfor %}
 
 <ol class="step-nav">
-  {%- for step in docs -%}
+  {% for step in docs -%}
     <li {% if step.url == page.url %}class="current"{% endif %}>
       <a href="{{ step.url }}">{{- step.title -}}</a>
     </li>
