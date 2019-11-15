@@ -1,49 +1,41 @@
 ---
 layout: step
-title: Setup
+title: 配置
 menu_name: Step by Step Tutorial
 position: 1
 ---
-Welcome to Jekyll's step-by-step tutorial. The goal of this tutorial is to take
-you from having some front end web development experience to building your
-first Jekyll site from scratch — not relying on the default gem-based theme. 
-Let's get into it!
+欢迎来到 Jekyll 的 step-by-step 教程. 本教程的目标是：让一个拥有一点前端网络开发经验的人，能够在不依靠默认 gem-based 主题的前提下，从头开始创建第一个 Jekyll 网站 . 
+让我们开始吧 !
 
-## Installation
+## 安装
 
-Jekyll is a Ruby program so you need to install Ruby on your machine to begin
-with. Head over to the [install guide](/docs/installation/) and follow the
-instructions for your operating system.
+Jekyll 是一个 Ruby 程序，所以首先要在本地电脑上安装 Ruby. 转到 [安装指南](/docs/installation/) ，并依照你的操作系统的说明操作.
 
-With Ruby setup you can install Jekyll by running the following in your
-terminal:
+使用 Ruby 安装程序，你可以在终端中运行以下命令来安装 Jekyll:
 
 ```
 gem install jekyll bundler
 ```
 
-To create a new `Gemfile` to list your project's dependencies run:
+创建一个新的  `Gemfile` 来列出项目的依赖项，运行:
 
 ```
 bundle init
 ```
 
-Now edit the `Gemfile`and add jekyll as a dependency:
+编辑这个 `Gemfile` 并将 jekyll 添加为依赖项:
 
 ```
 gem "jekyll"
 ```
 
-Finally run `bundle` to install jekyll for your project.
+最后运行 `bundle` 来为你的项目安装 jekyll.
 
-You can now prefix all jekyll commands listed in this tutorial with `bundle exec` 
-to make sure you use the jekyll version defined in your `Gemfile`.
+现在，你可以在本教程列出的所有 jekyll 命令前面加上 `bundle exec` 前缀，以保证你使用的 jekyll 是 `Gemfile` 定义的版本 .
 
-## Create a site
+## 创建网站
 
-It's time to create a site! Create a new directory for your site, you can name
-it whatever you'd like. Through the rest of this tutorial we'll refer to this
-directory as “root”.
+是时候创建一个站点了! 为你的站点新建一个文件夹, 你可以随便命名. 本教程中，我们命名为 “root” .
 
 If you're feeling adventurous, you can also initialize a Git repository here.
 One of the great things about Jekyll is there's no database. All content and
@@ -52,15 +44,14 @@ is completely optional but it's a great habit to get into. You can learn more
 about using Git by reading through the
 [Git Handbook](https://guides.github.com/introduction/git-handbook/).
 
-Let's add your first file. Create `index.html` in the root with the following
-content:
+让我们来添加第一个文件. 在根目录下创建 `index.html` 文件，其内容如下:
 
 ```html
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>主页</title>
   </head>
   <body>
     <h1>Hello World!</h1>
@@ -68,24 +59,15 @@ content:
 </html>
 ```
 
-## Build
+## 构建
 
-Jekyll is a static site generator so we need Jekyll to build the site
-before we can view it. There are two commands you can run in the root of your site
-to build it:
+Jekyll 是一个静态网站生成器，所以我们需要 Jekyll 事先构建网站，然后才能浏览它。可以在站点根目录下运行以下两条命令来构建它:
 
-* `jekyll build` - Builds the site and outputs a static site to a directory
-called `_site`.
-* `jekyll serve` - Does the same thing except it rebuilds any time you make
-a change and runs a local web server at `http://localhost:4000`.
+* `jekyll build` - 构建站点并将静态站点输出到名为 `_site` 的文件夹中.
+* `jekyll serve` - 除了与上一条做同样的事情外, 还在你做更改时实时重构，同时运行一个本地网站服务器，网址为：`http://localhost:4000`.
 
-When you're developing a site you'll use `jekyll serve` as it updates with any
-changes you make.
+当你正在开发一个站点时，可以使用 `jekyll serve` 命令，因为他会实时更新你所做的任何更改.
 
-Run `jekyll serve` and go to
-<a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a> in
-your browser. You should see "Hello World!".
+运行 `jekyll serve` 并在浏览器中打开 <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a>. 你应该会看到 "Hello World!".
 
-Well, you might be thinking what's the point in this? Jekyll just copied an
-HTML file from one place to another. Well patience young grasshopper, there's
-still much to learn!
+Well, 你可能在想这有什么意义? Jekyll 只是把一个 HTML 文件从一个地方复制到了另一个地方。 耐心点吧，年轻人, 这才刚刚开始!
