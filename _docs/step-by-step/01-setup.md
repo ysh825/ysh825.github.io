@@ -1,6 +1,6 @@
 ---
 layout: step
-title: 配置
+title: 环境配置
 menu_name: Step by Step 教程
 position: 1
 ---
