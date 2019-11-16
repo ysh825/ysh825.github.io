@@ -3,7 +3,7 @@ layout: step
 title: Front Matter
 position: 3
 ---
-Front matter 是一个  [YAML](http://yaml.org/) 片段，他位于文件顶部的两条三虚线之间。Front matter 用来为页面设置变量，例如：
+Front matter 是一个 [YAML](http://yaml.org/) 片段，他位于文件顶部的两条三虚线之间。Front matter 用来为页面设置变量，例如：
 ```liquid
 ---
 my_number: 5
