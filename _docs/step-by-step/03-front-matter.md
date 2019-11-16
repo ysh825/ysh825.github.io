@@ -4,7 +4,7 @@ title: Front Matter
 position: 3
 ---
 Front matter is a snippet of [YAML](http://yaml.org/) which sits between two
-triple-dashed lines at the top of a file. Front matter is used to set variables
+triple-dashed lines at 文件的开头。 Front matter is used to set variables
 for the page, for example:
 
 ```liquid
@@ -22,7 +22,7 @@ example to output the variable above you would use:
 ```
 {% endraw %}
 
-## Use front matter
+## 使用 front matter
 
 Let's change the `<title>` on your site to populate using front matter:
 
