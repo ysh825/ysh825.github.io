@@ -1,33 +1,22 @@
 ---
 layout: step
-title: Liquid
+title: Liquid 语言
 position: 2
 ---
-Liquid is where Jekyll starts to get more interesting. Liquid is a templating
-language which has three main parts: [objects](#objects), [tags](#tags) and
-[filters](#filters).
+Liquid 是使 Jekyll 开始变得有趣的地方。Liquid 是一种模板语言，他有三个主要部件: [对象](#对象), [标签](#标签) 和 [过滤器](#过滤器).
 
 
-## Objects
-
-Objects tell Liquid where to output content. They're denoted by double curly
-braces: {% raw %}`{{`{% endraw %} and {% raw %}`}}`{% endraw %}. For example:
-
-{% raw %}
+## 对象
+对象告诉 Liquid 在哪里输出内容。他们用双大括号  `{{` 和 `}}` 标记。  
+例如：
 ```liquid
 {{ page.title }}
 ```
-{% endraw %}
+会在页面上输出一个名为 `page.title` 的变量。
 
-Outputs a variable called `page.title` on the page.
-
-## Tags
-
-Tags create the logic and control flow for templates. They are denoted by curly
-braces and percent signs: {% raw %}`{%`{% endraw %} and
-{% raw %}`%}`{% endraw %}. For example:
-
-{% raw %}
+## 标签
+标签为模板创建逻辑和控制流。 他们用大括号和百分号 `{%` 和 `%}` 标记。  
+例如：
 ```liquid
 {% if page.show_sidebar %}
   <div class="sidebar">
@@ -35,50 +24,37 @@ braces and percent signs: {% raw %}`{%`{% endraw %} and
   </div>
 {% endif %}
 ```
-{% endraw %}
+如果 `page.show_sidebar` 为真，则输出侧边栏(sidebar)。   
+可以在 [这里](/docs/liquid/tags/) 详细学习标签的用法。
 
-Outputs the sidebar if `page.show_sidebar` is true. You can learn more about the
-tags available to Jekyll [here](/docs/liquid/tags/).
-
-## Filters
-
-Filters change the output of a Liquid object. They are used within an output
-and are separated by a `|`. For example:
-
-{% raw %}
+## 过滤器
+过滤器改变 Liquid 对象的输出。他们用在输出中，并用  `|` 分隔开。  
+例如：
 ```liquid
 {{ "hi" | capitalize }}
 ```
-{% endraw %}
+输出  `Hi`。  
+可以在 [这里](/docs/liquid/filters/) 详细学习过滤器的用法。
 
-Outputs `Hi`. You can learn more about the filters available to Jekyll
-[here](/docs/liquid/filters/).
-
-## Use Liquid
-
-Now it's your turn, change the Hello World! on your page to output as lowercase:
-
-{% raw %}
+## 应用过滤器
+现在轮到你了，把页面上输出的 "Hello World!" 更改为小写格式：
 ```liquid
 ...
 <h1>{{ "Hello World!" | downcase }}</h1>
 ...
 ```
-{% endraw %}
 
-To get our changes processed by Jekyll we need to add [front matter](../03-front-matter/) to the top of the page:
+为使我们的更改被 Jekyll 处理，需要在页面的开头添加 [front matter](../03-front-matter/) ：
 
 ```markdown
 ---
 # front matter tells Jekyll to process Liquid
 ---
 ```
+现在，我们的 "Hello World!" 会被渲染为小写。
 
-Our "Hello World!" will now be downcased on render.
+现在可能还不像看起来那样，但是很多 Jekyll 的功能都来源于 Liquid 和其它特性的组合。
 
-It may not seem like it now, but much of Jekyll's power comes from combining
-Liquid with other features.
+为了看到 Liquid 过滤器  `downcase` 所做的改变，我们需要添加 front matter.
 
-In order to see the changes from `downcase` Liquid filter, we will need to add front matter.
-
-That's next. Let's keep going.
+那是下一节，我们继续吧。
