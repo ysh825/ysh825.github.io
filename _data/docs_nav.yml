@@ -1,15 +1,15 @@
-- title: Getting Started
+- title: 开始
   docs:
     - link: /docs/
     - link: /docs/ruby-101/
     - link: /docs/installation/
     - link: /docs/community/
     - link: /docs/step-by-step/01-setup/
-- title: Build
+- title: 构建
   docs:
     - link: /docs/usage/
     - link: /docs/configuration/
-- title: Content
+- title: 内容
   docs:
     - link: /docs/pages/
     - link: /docs/posts/
@@ -18,7 +18,7 @@
     - link: /docs/datafiles/
     - link: /docs/assets/
     - link: /docs/static-files/
-- title: Site Structure
+- title: 网站框架
   docs:
     - link: /docs/structure/
     - link: /docs/liquid/
@@ -28,7 +28,7 @@
     - link: /docs/permalinks/
     - link: /docs/themes/
     - link: /docs/pagination/
-- title: Guides
+- title: 指南
   docs:
     - link: /docs/plugins/
     - link: /docs/migrations/
