@@ -15,7 +15,7 @@
       </div>
       <div class="right align-left">
           {%- if forloop.last -%}
-            <span class="next disabled">Next</span>
+            <span class="next disabled">下一页</span>
           {%- else -%}
             {% assign next = forloop.index0 | plus: 1 %}
             {% assign next_page = tutorials[next] | prepend:"/tutorials/" | append:"/" %}
@@ -34,7 +34,7 @@
     <div class="section-nav">
       <div class="left align-right">
           {%- if forloop.first -%}
-            <span class="prev disabled">Back</span>
+            <span class="prev disabled">上一页</span>
           {%- else -%}
             {% assign previous = forloop.index0 | minus: 1 %}
             <a href="{{ docs[previous].url }}" class="prev">上一页</a>
@@ -42,7 +42,7 @@
       </div>
       <div class="right align-left">
           {%- if forloop.last -%}
-            <span class="next disabled">Next</span>
+            <span class="next disabled">下一页</span>
           {%- else -%}
             {% assign next = forloop.index0 | plus: 1 %}
             <a href="{{ docs[next].url }}" class="next">下一页</a>
