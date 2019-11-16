@@ -7,19 +7,19 @@ Liquid 是使 Jekyll 开始变得有趣的地方。Liquid 是一种模板语言�
 
 
 ## 对象
-对象告诉 Liquid 在哪里输出内容。他们用双大括号 <% raw %>`{{` 和 `}}`<% endraw %> 标记。  
+对象告诉 Liquid 在哪里输出内容。他们用双大括号 {% raw %}`{{` 和 `}}`{% endraw %} 标记。  
 例如：
-<% raw %>
+{% raw %}
 ```liquid
 {{ page.title }}
 ```
-<% endraw %>
+{% endraw %}
 会在页面上输出一个名为 `page.title` 的变量。
 
 ## 标签
-标签为模板创建逻辑和控制流。 他们用大括号和百分号 <% raw %>`{%` 和 `%}`<% endraw %> 标记。  
+标签为模板创建逻辑和控制流。 他们用大括号和百分号 {% raw %}`{%` 和 `%}`{% endraw %} 标记。  
 例如：
-<% raw %>
+{% raw %}
 ```liquid
 {% if page.show_sidebar %}
   <div class="sidebar">
@@ -27,30 +27,30 @@ Liquid 是使 Jekyll 开始变得有趣的地方。Liquid 是一种模板语言�
   </div>
 {% endif %}
 ```
-<% endraw %>
+{% endraw %}
 如果 `page.show_sidebar` 为真，则输出侧边栏(sidebar)。   
 可以在 [这里](/docs/liquid/tags/) 详细学习标签的用法。
 
 ## 过滤器
 过滤器改变 Liquid 对象的输出。他们用在输出中，并用  `|` 分隔开。  
 例如：
-<% raw %>
+{% raw %}
 ```liquid
 {{ "hi" | capitalize }}
 ```
-<% endraw %>
+{% endraw %}
 输出  `Hi`。  
 可以在 [这里](/docs/liquid/filters/) 详细学习过滤器的用法。
 
 ## 应用过滤器
 现在轮到你了，把页面上输出的 "Hello World!" 更改为小写格式：
-<% raw %>
+{% raw %}
 ```liquid
 ...
 <h1>{{ "Hello World!" | downcase }}</h1>
 ...
 ```
-<% endraw %>
+{% endraw %}
 为使我们的更改被 Jekyll 处理，需要在页面的开头添加 [front matter](../03-front-matter/) ：
 
 ```markdown
