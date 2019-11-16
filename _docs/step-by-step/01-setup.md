@@ -1,7 +1,7 @@
 ---
 layout: step
 title: 配置
-menu_name: Step by Step Tutorial
+menu_name: Step by Step 教程
 position: 1
 ---
 欢迎来到 Jekyll 的 step-by-step 教程. 本教程的目标是：让一个拥有一点前端网络开发经验的人，能够在不依靠默认 gem-based 主题的前提下，从头开始创建第一个 Jekyll 网站 . 
