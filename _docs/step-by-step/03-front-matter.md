@@ -3,13 +3,13 @@ layout: step
 title: Front Matter
 position: 3
 ---
-Front matter 是一个 [YAML](http://yaml.org/) 片段，他位于文件顶部的两条三虚线之间。Front matter 用来为页面设置变量，例如：
+Front matter 是一个 [YAML](http://yaml.org/) 片段，他位于文件顶部的两条三段虚线之间。Front matter 用来为网页设置变量，例如：
 ```liquid
 ---
 my_number: 5
 ---
 ```
-Front matter 变量可在 Liquid 中用在  `page` 变量下。 例如要输出上面的变量，可以用：
+Liquid 可以在 `page` 变量下调用 Front matter 变量。 例如要输出上面的变量，可以用：
 {% raw %}
 ```liquid
 {{ page.my_number }}
@@ -17,7 +17,7 @@ Front matter 变量可在 Liquid 中用在  `page` 变量下。 例如要输出�
 {% endraw %}
 
 ## 应用 front matter
-让我们用 front matter 填充的方式来改变你网站的标题  `<title>` ：
+让我们用填充 front matter 的方式来改变你网站的标题 `<title>` ：
 {% raw %}
 ```html
 ---
@@ -36,4 +36,4 @@ title: 主页
 ```
 {% endraw %}
 
-你可能仍想知道为什么要用这种方式来输出，因为他比原始 HTML 需要更多的源代码。在下一节中，你将看到我们为什么一直都这样做。
+你可能会疑惑为什么要用这种输出方式，毕竟他比原始 HTML 需要的源代码更多。下一节中，你会看到我们为什么一直都这样做。
