@@ -1,30 +1,20 @@
 ---
 layout: step
-title: Layouts
+title: 网站布局
 position: 4
 ---
-Websites typically have more than one page and this website is no different.
+一般网站都包含多个网页，本站也不例外。
 
-Jekyll supports [Markdown](https://daringfireball.net/projects/markdown/syntax)
-as well as HTML for pages. Markdown is a great choice for pages with a simple
-content structure (just paragraphs, headings and images), as it's less verbose
-than raw HTML. Let's try it out on the next page.
+Jekyll 对 [Markdown](https://daringfireball.net/projects/markdown/syntax) 页面的支持与 HTML 页面一样好。Markdown 适用于内容与结构简单(仅有段落，标题和图片)的页面，他比原始 HTML 页面更简洁。让我们在下一个页面中试一下。
 
-Create `about.md` in the root.
+在根目录下新建  `about.md` 。
 
-For the structure you could copy `index.html` and modify it for the about page.
-The problem with doing this is duplicate code. Let's say you wanted to add a
-stylesheet to your site, you would have to go to each page and add it to the
-`<head>`. It might not sound so bad for a two page site, imagine doing it
-for 100 pages. Even simple changes will take a long time to make.
+你可能会复制  `index.html` 的结构到 "about" 页中并修改他。这么做的问题是代码会重复，假如你想在网站中添加一个样式表，你必须在每个网页的 `<head>` 中添加他。对于一个只有两个网页的站点来说，这听起来似乎没什么问题。但想象一下若对100个网页进行同样的操作，即便是简单的修改也会花费很长的时间。
 
-## Creating a layout
+## 创建布局
+使用布局是个更好的建议。布局是包装内容的模板。他们放在一个叫 `_layouts` 的目录中。
 
-Using a layout is a much better choice. Layouts are templates that wrap around
-your content. They live in a directory called `_layouts`.
-
-Create your first layout at `_layouts/default.html` with the following content:
-
+创建你的第一个布局 _layouts/default.html` ，内容如下：
 {% raw %}
 ```liquid
 <!doctype html>
@@ -40,50 +30,36 @@ Create your first layout at `_layouts/default.html` with the following content:
 ```
 {% endraw %}
 
-You'll notice this is almost identical to `index.html` except there's
-no front matter and the content of the page is replaced with a `content`
-variable. `content` is a special variable which has the value of the rendered
-content of the page it's called on.
+你会注意到这与 `index.html` 几乎一样，只是他没有 front matter 并且页面内容被一个 `content` 变量取代。`content` 是个特殊的变量，他的值是调用他的页面所呈现的内容。
 
-To have `index.html` use this layout, you can set a `layout` variable in front
-matter. The layout wraps around the content of the page so all you need in
-`index.html` is:
-
+要想让 `index.html` 使用这个布局，需要在 front matter 中放置一个 `layout` 变量。布局会包装页面内容，所以 `index.html` 只需要：
 {% raw %}
 ```html
 ---
 layout: default
-title: Home
+title: 主页
 ---
 <h1>{{ "Hello World!" | downcase }}</h1>
 ```
 {% endraw %}
 
-After doing this, the output will be exactly the same as before. Note that you
-can access the `page` front matter from the layout. In this case `title` is
-set in the index page's front matter but is output in the layout.
+这样做后，输出还跟以前完全一样。请注意，你可以从布局中访问 `page` front matter。这种情况下 `title` 在当前页面的 front matter 中定义，但他可以在布局中输出。
 
-## About page
+## About 页面
+回到 about 页，你也可以使用布局，而不用从 `index.html` 中复制。
 
-Back to the about page, instead of copying from `index.html`, you can use the
-layout.
-
-Add the following to `about.md`:
-
+将以下内容添加到 `about.md` 中：
 {% raw %}
 ```html
 ---
 layout: default
-title: About
+title: 关于
 ---
-# About page
-
-This page tells you a little bit about me.
+# 关于 页
+本页记录一些关于我的信息。
 ```
 {% endraw %}
 
-Open <a href="http://localhost:4000/about.html" target="_blank" data-proofer-ignore>http://localhost:4000/about.html</a>
-in your browser and view your new page.
+在浏览器中打开 <a href="http://localhost:4000/about.html" target="_blank" data-proofer-ignore>http://localhost:4000/about.html</a> 可以查看你的新网页。
 
-Congratulations, you now have a two page website! But how do you
-navigate from one page to another? Keep reading to find out.
+恭喜，现在你已经有了一个包含两个页面的站点。但是怎么从一个页面链接到另一个页面呢？继续读下去可以找到答案。
