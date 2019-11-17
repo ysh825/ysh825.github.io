@@ -3,36 +3,24 @@ layout: step
 title: Includes
 position: 5
 ---
-The site is coming together; however, there's no way to navigate between
-pages. Let's fix that.
+网站正在聚集，但是还没有在页面之间导航的办法。让我们来解决这个问题吧。
 
-Navigation should be on every page so adding it to your layout is the correct
-place to do this. Instead of adding it directly to the layout, let's use this
-as an opportunity to learn about includes.
+导航应该每个页面上都有，所以布局是添加导航的好地方。与其把导航直接添加到布局中中，不如利用这个机会来学习 includes。
 
-## Include tag
+## Include 标签
+`include` 标签允许你导入存储在 `_includes` 文件夹中的另一个文件的内容。Includes 可以使网站中重复的源代码有单一的源头，还可提高可读性。
 
-The `include` tag allows you to include content from another file stored
-in an `_includes` folder. Includes are useful for having a single source for
-source code that repeats around the site or for improving the readability.
+导航的源代码可能会越来越复杂，所以有时候把他移到 include 中是件好事。
 
-Navigation source code can get complex so sometimes it's nice to move it into an
-include. 
-
-## Include usage
-
-Create a file for the navigation at `_includes/navigation.html` with the
-following content:
-
+## 使用 Include
+新建一个导航文件 `_includes/navigation.html`，内容如下：
 ```liquid
 <nav>
-  <a href="/">Home</a>
-  <a href="/about.html">About</a>
+  <a href="/">主页</a>
+  <a href="/about.html">关于</a>
 </nav>
 ```
-
-Try using the include tag to add the navigation to `_layouts/default.html`:
-
+试着用 include 标签来把导航添加到 `_layouts/default.html`：
 {% raw %}
 ```liquid
 <!doctype html>
@@ -48,36 +36,25 @@ Try using the include tag to add the navigation to `_layouts/default.html`:
 </html>
 ```
 {% endraw %}
+在浏览器中打开 <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a>
+并试试在页面间切换。
 
-Open <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a>
-in your browser and try switching between the pages.
+## 突出当前页面
+让我们更进一步，突出显示导航中的当前页面。
 
-## Current page highlighting
+`_includes/navigation.html` 需要知道他插入的网页的地址(URL)，以便添加样式。Jekyll 有不少有用的 [变量](/docs/variables/) ，这里用到的是 `page.url`。
 
-Let's take this a step further and highlight the current page in the navigation.
-
-`_includes/navigation.html` needs to know the URL of the page it's inserted into
-so it can add styling. Jekyll has useful [variables](/docs/variables/) available
-one of which is `page.url`.
-
-Using `page.url` you can check if each link is the current page and color it red
-if true:
-
+你可以利用 `page.url` 查看每个链接是否为当前页面，如果是就涂成红色：
 {% raw %}
 ```liquid
 <nav>
-  <a href="/" {% if page.url == "/" %}style="color: red;"{% endif %}>
-    Home
-  </a>
-  <a href="/about.html" {% if page.url == "/about.html" %}style="color: red;"{% endif %}>
-    About
-  </a>
+  <a href="/" {% if page.url == "/" %}style="color: red;"{% endif %}>主页</a>
+  <a href="/about.html" {% if page.url == "/about.html" %}style="color: red;"{% endif %}>关于</a>
 </nav>
 ```
 {% endraw %}
 
-Take a look at <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a>
-and see your red link for the current page.
+转到<a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a>
+并查看一下当前页面的红色链接。
 
-There's still a lot of repetition here if you wanted to add a new item to the
-navigation or change the highlight color. In the next step we'll address this.
+如果你要在导航栏中添加新项目或改变突出颜色，这里仍然有许多重复工作。我们会在下一节中解决这个问题。
