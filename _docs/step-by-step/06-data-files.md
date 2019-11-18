@@ -1,34 +1,24 @@
 ---
 layout: step
-title: Data Files
+title: 数据文件
 position: 6
 ---
-Jekyll supports loading data from YAML, JSON, and CSV files located in a `_data`
-directory. Data files are a great way to separate content from source code to
-make the site easier to maintain.
+Jekyll 支持从 YAML, JSON, 和 CSV 文件中加载数据，数据文件存放在 `_data` 目录内。使用数据文件可以将内容从源代码中分离出来，使网站更容易维护。
 
-In this step you'll store the contents of the navigation in a data file
-and then iterate over it in the navigation include.
+在这一节(step)中，我们要把导航内容存储到一个数据文件中，然后在导航 include 中迭代他。
 
-## Data file usage
+## 使用数据文件
+[YAML](http://yaml.org/) 是 Ruby 生态系统中常见的一种格式。你将用他存储一组导航项目，每个项目包含一个名称和链接。
 
-[YAML](http://yaml.org/) is a format that's common in the Ruby ecosystem. You'll
-use it to store an array of navigation items each with a name and link.
-
-Create a data file for the navigation at `_data/navigation.yml` with the
-following:
-
+为导航创建一个数据文件 `_data/navigation.yml`，内容如下：
 ```yaml
-- name: Home
+- name: 主页
   link: /
-- name: About
+- name: 关于
   link: /about.html
 ```
 
-Jekyll makes this data file available to you at `site.data.navigation`. Instead
-of outputting each link in `_includes/navigation.html`, now you can iterate over
-the data file instead:
-
+Jekyll 使得你可以用 `site.data.navigation` 来访问这个数据文件，而不是在 `_includes/navigation.html` 中输出每个链接。现在你可以迭代这个数据文件了：
 {% raw %}
 ```liquid
 <nav>
@@ -41,8 +31,6 @@ the data file instead:
 ```
 {% endraw %}
 
-The output will be exactly the same. The difference is you’ve made it easier to
-add new navigation items and change the HTML structure.
+输出将完全相同。不同的是，你可以更容易的添加新的导航项和改变 HTML 结构。
 
-What good is a site without CSS, JS and images? Let’s look at how to handle
-assets in Jekyll.
+没有 CSS, JS 和图片的网站有什么好? 让我们看看如果处理 Jekyll 的资源。
