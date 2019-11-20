@@ -1,5 +1,5 @@
 ---
-title: Quickstart
+title: 快速入门
 permalink: /docs/
 redirect_from:
   - /docs/home/
@@ -11,7 +11,7 @@ in your favorite markup language and it churns through layouts to create a
 static website. Throughout that process you can tweak how you want the site URLs
 to look, what data gets displayed in the layout, and more.
 
-## Instructions
+## 说明
 
 1. Install a full [Ruby development environment](/docs/installation/)
 2. Install Jekyll and [bundler](/docs/ruby-101/#bundler) [gems](/docs/ruby-101/#gems)
