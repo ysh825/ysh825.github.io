@@ -1,19 +1,14 @@
 ---
 layout: step
-title: Blogging
+title: 博客
 position: 8
 ---
-You might be wondering how you can have a blog without a database. In true
-Jekyll style, blogging is powered by text files only.
+你可能想知道，没有数据库，怎么构建博客。在真正的 Jekyll 风格中，博客仅有文本文件驱动。
 
-## Posts
+## 帖子
+帖子文件位于一个名为 `_posts` 的文件夹中。帖子文件名使用一种特殊的格式：发布日期，然后是标题，跟着一个扩展名。
 
-Blog posts live in a folder called `_posts`. The filename for posts have a
-special format: the publish date, then a title, followed by an extension.
-
-Create your first post at `_posts/2018-08-20-bananas.md` with the
-following content:
-
+创建你的第一个帖子 `_posts/2018-08-20-bananas.md`，内容如下：
 ```markdown
 ---
 layout: post
@@ -29,14 +24,11 @@ starch covered with a rind, which may be green, yellow, red, purple, or brown
 when ripe.
 ```
 
-This is like the `about.md` you created before except it has an author and
-a different layout. `author` is a custom variable, it's not required and could
-have been named something like `creator`.
+这就像你之前创建的 `about.md` ，除了他有个作者(author)和不同的布局(layout)。`author` 是一个自定义变量，他不是必须的，也可以取其它名字，如 `creator`。
 
-## Layout
-
-The `post` layout doesn't exist so you'll need to create it at
-`_layouts/post.html` with the following content:
+## 布局
+布局 `post` 还不存在，所以你需要在 
+`_layouts/post.html` 中创建他，内容如下：
 
 {% raw %}
 ```html
@@ -50,27 +42,23 @@ layout: default
 ```
 {% endraw %}
 
-This is an example of layout inheritance. The post layout outputs the title,
-date, author and content body which is wrapped by the default layout.
+这是一个布局继承的例子。这个帖子布局输出标题， 日期，作者和正文内容，这些内容由默认布局包装。
 
-Also note the `date_to_string` filter, this formats a date into a nicer format.
+还要注意 `date_to_string` 过滤器，他将日期格式化为更好的格式。
 
-## List posts
+## 帖子列表
+目前还没有办法导航到博客帖子。博客一般都有一个列出所有帖子的页面，下面让我们来这样做。 
 
-There's currently no way to navigate to the blog post. Typically a blog has a
-page which lists all the posts, let's do that next.
+Jekyll 使得帖子可用 `site.posts` 来调用。
 
-Jekyll makes posts available at `site.posts`.
-
-Create `blog.html` in your root (`/blog.html`) with the following content:
-
+在你的根目录下创建 `blog.html`，内容如下：
 {% raw %}
 ```html
 ---
 layout: default
-title: Blog
+title: 博客
 ---
-<h1>Latest Posts</h1>
+<h1>最新帖子</h1>
 
 <ul>
   {% for post in site.posts %}
@@ -83,28 +71,25 @@ title: Blog
 ```
 {% endraw %}
 
-There's a few things to note with this code:
+这段代码需要注意以下几点：
 
-* `post.url` is automatically set by Jekyll to the output path of the post
-* `post.title` is pulled from the post filename and can be overridden by
-setting `title` in front matter
-* `post.excerpt` is the first paragraph of content by default
+* `post.url` 由 Jekyll 自动设置为帖子的输出路径
+* `post.title` 取自帖子文件名，可以通过在 front matter 中设置 `title` 来覆盖
+* `post.excerpt` 默认为内容第一段
 
-You also need a way to navigate to this page through the main navigation. Open
-`_data/navigation.yml` and add an entry for the blog page:
-
+你还需要一个从主导航导航到此页的方法。打开 
+`_data/navigation.yml` 并为博客添加一个条目：
 ```yaml
-- name: Home
+- name: 主页
   link: /
-- name: About
+- name: 关于
   link: /about.html
-- name: Blog
+- name: 博客
   link: /blog.html
 ```
 
-## More posts
-
-A blog isn't very exciting with a single post. Add a few more:
+## 更多帖子
+只有一篇帖子的博客很没意思。再添加一些：
 
 `_posts/2018-08-21-apples.md`:
 
@@ -139,7 +124,6 @@ golden flesh with rows of tiny, black, edible seeds. The fruit has a soft
 texture, with a sweet and unique flavor.
 ```
 
-Open <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a> and have
-a look through your blog posts.
+打开 <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a> 看看你的博客帖子。
 
-Next we'll focus on creating a page for each post author.
+接下来，我们将重点为每个帖子作者创建一个页面。

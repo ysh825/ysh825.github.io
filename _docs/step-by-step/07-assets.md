@@ -1,13 +1,11 @@
 ---
 layout: step
-title: Assets
+title: 资源
 position: 7
 ---
-Using CSS, JS, images and other assets is straightforward with Jekyll. Place
-them in your site folder and they’ll copy across to the built site.
+使用 CSS，JS，图片和其它资源对 Jekyll 来说很简单。只要将他们放置到你的站点文件夹中，他们就会被自动复制到构建的站点中。
 
-Jekyll sites often use this structure to keep assets organized:
-
+Jekyll 网站的资源组织一般使用如下结构：
 ```sh
 .
 ├── assets
@@ -18,26 +16,23 @@ Jekyll sites often use this structure to keep assets organized:
 ```
 
 ## Sass
-
-The inline styles used in `_includes/navigation.html` is not a best practice,
-let's style the current page with a class instead.
-
+在 `_includes/navigation.html` 中使用内嵌样式不是最好的做法，让我们用类来设计这个页面的样式。
 {% raw %}
 ```liquid
 <nav>
   {% for item in site.data.navigation %}
-    <a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>{{ item.name }}</a>
+    <a href="{{ item.link }}" 
+      {% if page.url == item.link %}class="current" {% endif %}>
+      {{ item.name }}
+    </a>
   {% endfor %}
 </nav>
 ```
 {% endraw %}
 
-You could use a standard CSS file for styling, we're going to take it a step
-further by using [Sass](https://sass-lang.com/). Sass is a fantastic extension
-to CSS baked right into Jekyll.
+你可以使用一个标准 CSS 文件进行样式设计，这里我们要通过使用 [Sass](https://sass-lang.com/) 来更进一步。Sass 是一个融合进 Jekyll 的神奇的 CSS 扩展。
 
-First create a Sass file at `/assets/css/styles.scss` with the following content:
-
+首先新建一个 Sass 文件 `/assets/css/styles.scss` ，内容如下：
 {% raw %}
 ```css
 ---
@@ -46,25 +41,20 @@ First create a Sass file at `/assets/css/styles.scss` with the following content
 ```
 {% endraw %}
 
-The empty front matter at the top tells Jekyll it needs to process the file. The
-`@import "main"` tells Sass to look for a file called `main.scss` in the sass
-directory (`_sass/` by default which is directly under root folder of your website).
+顶部的空白 front matter 告诉 Jekyll 他需要处理本文件。`@import "main"` 告诉 Sass 到 sass 目录下寻找一个叫 `main.scss` 的文件，(默认情况下 `_sass/` 直接位于网站根文件夹下)。
 
-At this stage you'll just have a main css file. For larger projects, this is a
-great way to keep your CSS organized.
+在这一步中，你只需要一个主 css 文件。对于较大的项目，这是保持 CSS 条理的好方法。
 
-Create a Sass file at `/_sass/main.scss` with the following content:
-
+新建一个 Sass 文件 `/_sass/main.scss` ，内容如下：
 ```sass
 .current {
   color: green;
 }
 ```
 
-You'll need to reference the stylesheet in your layout.
+你还需要在你的布局中引用这个样式表。
 
-Open `_layouts/default.html` and add the stylesheet to the `<head>`:
-
+打开 `_layouts/default.html` 并在  `<head>` 中添加样式表：
 {% raw %}
 ```liquid
 <!doctype html>
@@ -82,7 +72,6 @@ Open `_layouts/default.html` and add the stylesheet to the `<head>`:
 ```
 {% endraw %}
 
-Load up <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a>
-and check the active link in the navigation is green.
+加载 <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a> 并检查导航中的活动链接是否为绿色。
 
-Next we're looking at one of Jekyll's most popular features, blogging.
+接下来，我们将要关注一个 Jekyll 最受欢迎的功能，博客。
