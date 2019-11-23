@@ -1,34 +1,30 @@
 ---
 layout: step
-title: Collections
+title: 集合 Collections
 position: 9
 ---
-Let's look at fleshing out authors so each author has their own page with a
-blurb and the posts they've published.
+让我们来试着充实作者，这样每个作者都有他自己的页面，里面有简介和他们发表的帖子。
 
-To do this you'll use collections. Collections are similar to posts except the
-content doesn't have to be grouped by date.
+为此，你将使用集合。集合与博客帖子相似，只是内容不必按日期分组。
 
-## Configuration
+## 配置
 
-To set up a collection you need to tell Jekyll about it. Jekyll configuration
-happens in a file called `_config.yml` (by default).
+你需要告诉 Jekyll 一些相关信息来建立一个集合。Jekyll 默认将配置放在一个叫 `_config.yml` 的文件中。
 
-Create `_config.yml` in the root with the following:
+在根目录中新建 `_config.yml` 文件，内容如下：
 
 ```yaml
 collections:
   authors:
 ```
 
-To (re)load the configuration, restart the jekyll server. Press `Ctrl`+`C` in your terminal to stop the server, and then `jekyll serve` to restart it.
+要 (重新)加载配置，需要重启 jekyll 服务器。在终端中按 `Ctrl`+`C` 键来停止服务器，然后运行 `jekyll serve` 来重新启动他。
 
-## Add authors
+## 添加作者
 
-Documents (the items in a collection) live in a folder in the root of the site
-named  `_*collection_name*`. In this case, `_authors`.
+文档 (集合中的项目) 位于网站根目录下一个名为 `_*collection_name*` 的文件夹中。此处名为 `_authors`。
 
-Create a document for each author:
+为每个作者新建一个文档：
 
 `_authors/jill.md`:
 
@@ -38,7 +34,7 @@ short_name: jill
 name: Jill Smith
 position: Chief Editor
 ---
-Jill is an avid fruit grower based in the south of France.
+Jill 是一个狂热的水果种植者，他住在法国南部。
 ```
 
 `_authors/ted.md`:
@@ -49,23 +45,22 @@ short_name: ted
 name: Ted Doe
 position: Writer
 ---
-Ted has been eating fruit since he was baby.
+Ted 吃了一辈子水果。
 ```
 
-## Staff page
+## 人员页面
 
-Let's add a page which lists all the authors on the site. Jekyll makes the
-collection available at `site.authors`.
+让我们添加一个页面，列出本站的所有作者。 Jekyll 使得本集合可用于 `site.authors` 变量表示。
 
-Create `staff.html` and iterate over `site.authors` to output all the staff:
+新建 `staff.html` 并迭代 `site.authors` 以输出所有人员：
 
 {% raw %}
 ```html
 ---
 layout: default
-title: Staff
+title: 人员
 ---
-<h1>Staff</h1>
+<h1>人员</h1>
 
 <ul>
   {% for author in site.authors %}
@@ -79,32 +74,26 @@ title: Staff
 ```
 {% endraw %}
 
-Since the content is markdown, you need to run it through the
-`markdownify` filter. This happens automatically when outputting using
-{% raw %}`{{ content }}`{% endraw %} in a layout.
+由于内容是 markdown 文件，运行时需要通过 `markdownify` 过滤器。这会在布局中用 
+{% raw %}`{{ content }}`{% endraw %} 输出时自动完成。 
 
-You also need a way to navigate to this page through the main navigation. Open
-`_data/navigation.yml` and add an entry for the staff page:
-
+你还需要一种从主导航导航到本页面的方法。 打开 `_data/navigation.yml` 并为人员页面添加一个条目：
 ```yaml
-- name: Home
+- name: 主页
   link: /
-- name: About
+- name: 关于
   link: /about.html
-- name: Blog
+- name: 博客
   link: /blog.html
-- name: Staff
+- name: 人员
   link: /staff.html
 ```
 
-## Output a page
+## 输出单独页面
 
-By default, collections do not output a page for documents. In this case we
-want each author to have their own page so let's tweak the collection
-configuration.
+默认情况下，集合不会输出文档页面。这种情况下，我们希望每个作者都有他们单独的页面，所以让我们来调整集合的配置。
 
-Open `_config.yml` and add `output: true` to the author collection
-configuration:
+打开 `_config.yml` 并在作者集合的配置中添加 `output: true` ：
 
 ```yaml
 collections:
@@ -112,16 +101,15 @@ collections:
     output: true
 ```
 
-You can link to the output page using `author.url`.
-
-Add the link to the `staff.html` page:
+你可以使用 `author.url` 链接到这些输出页面。
+添加链接到 `staff.html` 页面：
 
 {% raw %}
 ```html
 ---
 layout: default
 ---
-<h1>Staff</h1>
+<h1>人员</h1>
 
 <ul>
   {% for author in site.authors %}
@@ -135,9 +123,9 @@ layout: default
 ```
 {% endraw %}
 
-Just like posts you'll need to create a layout for authors.
+跟博客帖子一样，你需要为作者页面创建一个布局。
 
-Create `_layouts/author.html` with the following content:
+新建 `_layouts/author.html` ，内容如下：
 
 {% raw %}
 ```html
@@ -151,20 +139,15 @@ layout: default
 ```
 {% endraw %}
 
-## Front matter defaults
+## 默认 Front matter
 
-Now you need to configure the author documents to use the `author` layout. You
-could do this in the front matter like we have previously but that's getting
-repetitive.
+现在你需要配置作者文档，让其使用 `author` 布局。你可以在 front matter 里做这些，就像我们以前做过的一样，但这越来越重复了。
 
-What you really want is all posts to automatically have the post
-layout, authors to have author and everything else to use the default.
+我们真正想要的是，所有帖子都自动拥有帖子布局，作者拥有作者布局，其它一切都有默认布局。
 
-You can achieve this by using [front matter defaults](/docs/configuration/front-matter-defaults/)
-in `_config.yml`. You set a scope of what the default applies to, then the
-default front matter you'd like.
+你可以通过在 `_config.yml` 里使用 [默认 front matter](/docs/configuration/front-matter-defaults/)来实现这一点。你可以设置默认值的适用范围，然后设置你想要的默认 front matter。
 
-Add defaults for layouts to your `_config.yml`,
+将布局的默认值添加到你的 `_config.yml` 中
 
 ```yaml
 collections:
@@ -188,18 +171,13 @@ defaults:
       layout: "default"
 ```
 
-Now you can remove layout from the front matter of all pages and posts. Note
-that any time you update `_config.yml` you'll need to restart Jekyll for the
-changes to take affect.
+现在你可以把所有页面和帖子 front matter 中的布局移除了。请注意，不管什么时候你更新了 `_config.yml` ，都需要重启 Jekyll 以使更改生效。
 
-## List author's posts
+## 列出作者的帖子
 
-Let's list the posts an author has published on their page. To do
-this you need to match the author `short_name` to the post `author`. You
-use this to filter the posts by author.
+让我们在每个作者自己的页面上列出他发表过的帖子。为此，你需要用作者的 `short_name` 去匹配帖子的 `author` 。你可以按这种方法用作者过滤帖子。
 
-Iterate over this filtered list in `_layouts/author.html` to output the
-author's posts:
+在 `_layouts/author.html` 中迭代此过滤列表，以输出作者的帖子：
 
 {% raw %}
 ```html
@@ -211,7 +189,7 @@ layout: default
 
 {{ content }}
 
-<h2>Posts</h2>
+<h2>帖子</h2>
 <ul>
   {% assign filtered_posts = site.posts | where: 'author', page.short_name %}
   {% for post in filtered_posts %}
@@ -221,10 +199,9 @@ layout: default
 ```
 {% endraw %}
 
-## Link to authors page
+## 链接到作者页面
 
-The posts have a reference to the author so let's link it to the author's page.
-You can do this using a similar filtering technique in `_layouts/post.html`:
+这些帖子引用了作者，所以让我们把他们链接到作者页面。你可以在 `_layouts/post.html` 中使用类似的过滤技术来实现这一点。
 
 {% raw %}
 ```html
@@ -245,9 +222,6 @@ layout: default
 ```
 {% endraw %}
 
-Open up <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a> and
-have a look at the staff page and the author links on posts to check everything
-is linked together correctly.
+打开 <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a> ，并查看人员页面和帖子上的作者链接，检查所有内容是否正确链接在一起。
 
-In the next and final step of this tutorial, we'll add polish to the site and
-get it ready for a production deployment.
+在本教程的下一节（step），也是最后一节，我们将向站点添加润色， 并为安装部署做好准备。
