@@ -1,5 +1,5 @@
 ---
-title: Jekyll on Windows
+title:  Windows 上的 Jekyll
 permalink: /docs/installation/windows/
 redirect_from:
   - /docs/windows/
@@ -9,9 +9,9 @@ While Windows is not an officially-supported platform, it can be used to run Jek
 collect some of the general knowledge and lessons that have been unearthed by Windows users.
 
 
-## Installing Jekyll
+## 安装 Jekyll
 
-### Installation via RubyInstaller
+### 通过 RubyInstaller 安装
 
 The easiest way to run Jekyll is by using the [RubyInstaller](https://rubyinstaller.org/) for Windows.
 
@@ -31,25 +31,23 @@ We only cover RubyInstaller-2.4 and newer here, older versions need to
 
 That's it, you're ready to use Jekyll!
 
-### Installation via Bash on Windows 10
+### 在Windows 10 上通过 Bash 安装
 
-If you are using Windows 10 version 1607 or later, another option to run Jekyll is by
-[installing](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) the Windows Subsystem for Linux.
+如果你用的是1607版或更高版本的 Windows 10，另一个运行 Jekyll 的选项是 [安装](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) Windows 的 Linux 子系统。
 
-*Note:* You must have [Windows Subsystem for Linux](https://msdn.microsoft.com/en-us/commandline/wsl/about) enabled.
+*注意：* 你必须已经使能了 [Windows 的  Linux 子系统](https://msdn.microsoft.com/en-us/commandline/wsl/about)
 
-First let's make sure all our packages / repositories are up to date. Open a new Command Prompt instance, and type the following:
+我们首先要确保所有的软件包/仓库 都是最新的。打开一个新的命令提示符实例，并键入以下命令：
 
 ```sh
 bash
 ```
-Your Command Prompt instance should now be a Bash instance. Now we must update our repo lists and packages.
+你的命令提示符实例现在应该是一个 Bash 实例。现在我们需要升级我们的软件包清单和软件包。
 
 ```sh
 sudo apt-get update -y && sudo apt-get upgrade -y
 ```
-Now we can install Ruby. To do this we will use a repository from [BrightBox](https://www.brightbox.com/docs/ruby/ubuntu/),
-which hosts optimized versions of Ruby for Ubuntu.
+现在我们可以安装 Ruby。为此，我们将使用一个叫 [BrightBox](https://www.brightbox.com/docs/ruby/ubuntu/)的存储仓库，他为 Ubuntu 托管最新版本的 Ruby。
 
 ```sh
 sudo apt-add-repository ppa:brightbox/ruby-ng
@@ -57,41 +55,38 @@ sudo apt-get update
 sudo apt-get install ruby2.5 ruby2.5-dev build-essential dh-autoreconf
 ```
 
-Next let's update our Ruby gems:
+下一步，让我们升级我们的 Ruby gems:
 
 ```sh
 gem update
 ```
 
-Now all that is left to do is install Jekyll.
+现在需要做的就是安装 Jekyll。
 
 ```sh
 gem install jekyll bundler
 ```
 
-(*Note: no `sudo` here.*)
+(*注意: 此处没有 `sudo`*)
 
-Check if Jekyll installed properly by running:
+检查 Jekyll 是否安装正确，运行：
 
 ```sh
 jekyll -v
 ```
 
-**And that's it!**
+**就这些了!**
 
-You can make sure time management is working properly by inspecting your `_posts` folder. You should see a markdown file
-with the current date in the filename.
+你可以确保时间管理工作正常，检查你的 `_posts` 文件夹来，应该会看到一个以当前日期命名的 markdown 文件。
 
 <div class="note info">
-  <h5>Non-superuser account issues</h5>
-  <p>If the `jekyll new` command prints the error "Your user account isn't allowed to install to the system RubyGems", see
-  the "Running Jekyll as Non-Superuser" instructions in <a href="/docs/troubleshooting/#no-sudo">Troubleshooting</a>.</p>
+  <h5>非超级用户账户问题</h5>
+  <p>如果 `jekyll new` 命令输出错误 "Your user account isn't allowed to install to the system RubyGems", 请参考 <a href="/docs/troubleshooting/#no-sudo">故障排除</a>中的 "以非超级用户运行 Jekyll " 说明。</p>
 </div>
 
-**Note:** Bash on Ubuntu on Windows is still under development, so you may run into issues.
+**注意：** Windows 的  Ubuntu 子系统上的 Bash 扔在开发中，所以你可能会遇到一些问题。
 
-
-## Encoding
+## 编码
 
 If you use UTF-8 encoding, make sure that no `BOM` header characters exist in your files or very, very bad things will happen to
 Jekyll. This is especially relevant when you're running Jekyll on Windows.
@@ -104,7 +99,7 @@ command:
 chcp 65001
 ```
 
-## Time-Zone Management
+## 时区管理
 
 Since Windows doesn't have a native source of zoneinfo data, the Ruby Interpreter would not understand IANA Timezones and hence
 using them had the `TZ` environment variable default to UTC/GMT 00:00.
