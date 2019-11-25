@@ -6,33 +6,28 @@ redirect_from:
   - /docs/quickstart/
   - /docs/extras/
 ---
-Jekyll is a simple, extendable, static site generator. You give it text written
-in your favorite markup language and it churns through layouts to create a
-static website. Throughout that process you can tweak how you want the site URLs
-to look, what data gets displayed in the layout, and more.
+Jekyll 是一个简单，可扩展的静态站点生成器。你只需用你喜欢的标记语言书写文本，他会根据布局帮你创建一个静态网站。 这个过程中，你可以调整你想要的网址样式，在布局中显示的数据等等。
 
-## 说明
+## 操作说明
 
-1. Install a full [Ruby development environment](/docs/installation/)
-2. Install Jekyll and [bundler](/docs/ruby-101/#bundler) [gems](/docs/ruby-101/#gems)
+1. 安装一个完整的 [Ruby开发环境](/docs/installation/)
+2. 用 [gems](/docs/ruby-101/#gems) 安装 Jekyll 和 [bundler](/docs/ruby-101/#bundler) 
 ```
 gem install jekyll bundler
 ```
-3. Create a new Jekyll site at `./myblog`
+3. 新建一个 Jekyll 站点，目录为 `./myblog` 
 ```
 jekyll new myblog
 ```
-4. Change into your new directory
+4. 转到你的新目录
 ```
 cd myblog
 ```
-5. Build the site and make it available on a local server
+5. 构建站点并启动一个本地服务器
 ```
 bundle exec jekyll serve
 ```
-6. Now browse to [http://localhost:4000](http://localhost:4000){:target="_blank"}
+6. 现在在浏览器中打开 [http://localhost:4000](http://localhost:4000){:target="_blank"}
 
-If you encounter any unexpected errors during the above, please refer to the
-[troubleshooting](/docs/troubleshooting/#configuration-problems) page or the
-already-mentioned [requirements](/docs/installation/#requirements) page, as
-you might be missing development headers or other prerequisites.
+如果在上述过程中遇到任何意外错误，请参阅 
+[故障排除](/docs/troubleshooting/#configuration-problems) 页 或 前面提到的 [先决条件](/docs/installation/#requirements) 页，你可能缺少开发头文件或其它先决条件。
