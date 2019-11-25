@@ -1,17 +1,15 @@
 ---
 layout: step
-title: Deployment
+title: 部署
 position: 10
 ---
-In this final step we'll get the site ready for production.
+这是最后一节(step)，我们将为站点的部署做准备。 
 
 ## Gemfile
 
-It's good practice to have a [Gemfile](/docs/ruby-101/#gemfile) for your site.
-This ensures the version of Jekyll and other gems remains consistent across
-different environments.
+为站点准备个 [Gemfile](/docs/ruby-101/#gemfile)文件是个好习惯。这保证了Jekyll 和其它 gems 的版本在不同的环境中保持一致。
 
-Create `Gemfile` in the root with the following:
+在根目录下新建 `Gemfile` 文件，内容如下：
 
 ```
 source 'https://rubygems.org'
@@ -19,37 +17,27 @@ source 'https://rubygems.org'
 gem 'jekyll'
 ```
 
-Then run `bundle install` in your terminal. This installs the gems and
-creates `Gemfile.lock` which locks the current gem versions for a future
-`bundle install`. If you ever want to update your gem versions you can run
-`bundle update`.
+然后在你的终端中运行 `bundle install` 。这将安装 gems 并创建 `Gemfile.lock`，他会锁定当前的 gem 版本，以便将来 `bundle install`。如果你想升级 gem 的版本，可运行 `bundle update` 。
 
-When using a `Gemfile`, you'll run commands like `jekyll serve` with
-`bundle exec` prefixed. So the full command is:
+要使用 `Gemfile` 文件， 需要在运行像 `jekyll serve` 的命令时添加 `bundle exec` 前缀。完整的命令格式是：
 
 ```bash
 bundle exec jekyll serve
 ```
 
-This restricts your Ruby environment to only use gems set in your `Gemfile`.
+这将你的 Ruby 环境限制为只能使用 `Gemfile` 设置的 gems 。
 
-## Plugins
+## 插件
 
-Jekyll plugins allow you to create custom generated content specific to your
-site. There's many [plugins](/docs/plugins/) available or you can even
-write your own.
+Jekyll 插件允许你专门为你自己的站点创建自定义生成内容。官方有很多可用的 [插件](/docs/plugins/) ，你也可以自己编写。
 
-There's three official plugins which are useful on almost any Jekyll site:
+有三个官方插件在几乎所有的 Jekyll 站点上都在使用：
 
-* [jekyll-sitemap](https://github.com/jekyll/jekyll-sitemap) - Creates a sitemap
-file to help search engines index content
-* [jekyll-feed](https://github.com/jekyll/jekyll-feed) - Creates an RSS feed for
-your posts
-* [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag) - Adds meta tags to help
-with SEO
+* [jekyll-sitemap](https://github.com/jekyll/jekyll-sitemap) - 创建站点地图文件，以帮助搜索引擎索引内容
+* [jekyll-feed](https://github.com/jekyll/jekyll-feed) - 为你的帖子创建一个 RSS 源
+* [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag) - 添加元(meta)标签来帮助搜索引擎优化(SEO)
 
-To use these first you need to add them to your `Gemfile`. If you put them
-in a `jekyll_plugins` group they'll automatically be required into Jekyll:
+要使用这些，你需要先把他们添加到 `Gemfile` 文件中。只要你将他们添加到一个 `jekyll_plugins` 组中，他们将自动进入 Jekyll：
 
 ```
 source 'https://rubygems.org'
@@ -63,7 +51,7 @@ group :jekyll_plugins do
 end
 ```
 
-Then add these lines to your `_config.yml`:
+然后你的 `_config.yml` 中添加以下几行：
 
 ```
 plugins:
@@ -72,12 +60,12 @@ plugins:
   - jekyll-seo-tag
 ```
 
-Now install them by running a `bundle update`.
+现在运行 `bundle update` 命令来安装他们。
 
-`jekyll-sitemap` doesn't need any setup, it will create your sitemap on build.
+`jekyll-sitemap` 不需要任何设置，他会在站点构建时为你创建站点地图。
 
-For `jekyll-feed` and `jekyll-seo-tag` you need to add tags to
-`_layouts/default.html`:
+对于 `jekyll-feed` 和 `jekyll-seo-tag` ，你需要在
+`_layouts/default.html` 中添加标签。
 
 {% raw %}
 ```liquid
@@ -98,24 +86,19 @@ For `jekyll-feed` and `jekyll-seo-tag` you need to add tags to
 ```
 {% endraw %}
 
-Restart your Jekyll server and check these tags are added to the `<head>`.
+重启你的 Jekyll 服务器，并检查这些标签是否已添加到 `<head>` 中。
 
-## Environments
+## 环境
 
-Sometimes you might want to output something in production but not
-in development. Analytics scripts are the most common example of this.
+有时你可能想在生产时输出一些东西，而在开发中不输出。分析脚本是最常见的例子。
 
-To do this you can use [environments](/docs/configuration/environments/). You
-can set the environment by using the `JEKYLL_ENV` environment variable when
-running a command. For example:
+为此，你可以使用 [环境](/docs/configuration/environments/)。运行命令时，你可以使用 `JEKYLL_ENV` 环境变量来设置环境。例如：
 
 ```bash
 JEKYLL_ENV=production bundle exec jekyll build
 ```
 
-By default `JEKYLL_ENV` is development. The `JEKYLL_ENV` is available to you
-in liquid using `jekyll.environment`. So to only output the analytics script
-on production you would do the following:
+默认情况下，`JEKYLL_ENV` 是开发环境。 你可以在 liquid 中用 `jekyll.environment` 来调用 `JEKYLL_ENV`。所以，要想仅在生产时输出分析脚本，你需要执行以下操作：
 
 {% raw %}
 ```liquid
@@ -125,25 +108,23 @@ on production you would do the following:
 ```
 {% endraw %}
 
-## Deployment
+## 部署
 
-The final step is to get the site onto a production server. The most basic way
-to do this is to run a production build:
+最后一步是将站点放到一个生产服务器上。最基本的方法是运行生产构建：
 
 ```bash
 JEKYLL_ENV=production bundle exec jekyll build
 ```
 
-And copy the contents of `_site` to your server.
+并将 `_site` 的内容复制到你的服务器上。
 
-A better way is to automate this process using a [CI](/docs/deployment/automated/)
-or [3rd party](/docs/deployment/third-party/).
+更好的办法是使用 [CI](/docs/deployment/automated/)
+或 [第三方](/docs/deployment/third-party/)来自动化处理这个过程。
 
-## Wrap up
+## 总结
 
-That brings us to the end of this step-by-step tutorial and the beginning of
-your Jekyll journey!
+我们终于结束了这个 step-by-step 教程，并开启了你的 Jekyll 之旅!
 
-* Come say hi to the [community forums](https://talk.jekyllrb.com)
-* Help us make Jekyll better by [contributing](/docs/contributing/)
-* Keep building Jekyll sites!
+* 去 [社区论坛](https://talk.jekyllrb.com) 打个招呼吧
+* 为使 Jekyll 变得更好，[贡献](/docs/contributing/) 你的力量
+* 继续建设 Jekyll 站点!
