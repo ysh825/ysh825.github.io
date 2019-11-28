@@ -1,21 +1,21 @@
 ---
-title:  Command Line Usage
+title:  命令行用法
 permalink: /docs/usage/
 ---
 
-The Jekyll gem makes a `jekyll` executable available to you in your terminal.
+Jekyll gem 让你可以在命令行终端中运行 `jekyll` 程序。
 
-You can use this command in a number of ways:
+你可以通过多种方式执行这些命令：
 
-* `jekyll new` - Creates a new Jekyll site with default gem-based theme
-* `jekyll new --blank` - Creates a new blank Jekyll site scaffold
-* `jekyll build` or `jekyll b` - Performs a one off build your site to `./_site` (by default)
-* `jekyll serve` or `jekyll s` - Builds your site any time a source file changes and serves it locally
-* `jekyll doctor` - Outputs any deprecation or configuration issues
-* `jekyll clean` - Removes all generated files: destination folder, metadata file, Sass and Jekyll caches.
-* `jekyll help` - Shows help, optionally for a given subcommand, e.g. `jekyll help build`
-* `jekyll new-theme` - Creates a new Jekyll theme scaffold
+* `jekyll new` - 新建一个 Jekyll 站点，使用基于 gem 的默认主题
+* `jekyll new --blank` - 新建一个空白的 Jekyll 站点框架
+* `jekyll build` 或 `jekyll b` - 执行一次站点构建，并将结果输出到默认文件夹 `./_site` 中
+* `jekyll serve` 或 `jekyll s` - 启动本地服务器，并且每当源文件变更时，都实时构建站点
+* `jekyll doctor` - 输出任何弃用功能或配置问题
+* `jekyll clean` - 移除所有生成的文件：目标文件夹，元数据文件，Sass 和 Jekyll 缓存。
+* `jekyll help` - 显示帮助信息，可针对给定的子命令，例如： `jekyll help build`
+* `jekyll new-theme` - 新建一个 Jekyll 主题框架
 
-Typically you'll use `jekyll serve` while developing locally and `jekyll build` when you need to generate the site for production.
+通常，本地开发时使用 `jekyll serve` 命令；需要为生产环境生成站点时，使用 `jekyll build` 命令。
 
-To change Jekyll's default build behavior have a look through the [configuration options](/docs/configuration/).
+如需更改 Jekyll 的默认构建行为，请查看 [配置选项](/docs/configuration/).

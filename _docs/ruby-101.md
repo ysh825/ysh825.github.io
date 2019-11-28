@@ -3,25 +3,22 @@ title: Ruby 101
 permalink: /docs/ruby-101/
 ---
 
-Jekyll is written in Ruby. If you're new to Ruby, this page is to help you get
-up to speed with some of the terminology.
+Jekyll 是用 Ruby 写的，如果你是 Ruby 新手，本页帮助你快速熟悉一些术语。
 
 ## Gems
 
-A gem is code you can include in Ruby projects. It allows you to package up functionality and share it across other projects or with other people. Gems can perform functionality such as:
+gem 是一组代码，可以包含到 Ruby 项目中直接调用。他允许你把功能打包，并在其它项目或其它人之间共享。Gems 可以执行以下功能：
 
-* Converting a Ruby object to JSON
-* Pagination
-* Interacting with APIs such as GitHub
-* Jekyll itself is a gem as well as many Jekyll plugins including
-[jekyll-feed](https://github.com/jekyll/jekyll-feed),
-[jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag) and
-[jekyll-archives](https://github.com/jekyll/jekyll-archives).
-
+* 将 Ruby 对象转换为 JSON
+* 分页
+* 与像 GitHub 这样的 API 交互
+* Jekyll 本身就是一个 gem ，还有许多 Jekyll 插件，包括 [jekyll-feed](https://github.com/jekyll/jekyll-feed),
+[jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag) 和
+[jekyll-archives](https://github.com/jekyll/jekyll-archives)
 
 ## Gemfile
 
-A `Gemfile` is a list of gems required for your site. For a simple Jekyll site it might look something like this:
+`Gemfile` 是你的站点所需 gems 的列表。对一个简单的 Jekyll 站点，他可能看起来像这样：
 
 ```ruby
 source "https://rubygems.org"
@@ -36,10 +33,10 @@ end
 
 ## Bundler
 
-Bundler installs the gems in your `Gemfile`. It's not a requirement for you to use a `Gemfile` and `bundler` however it's highly recommended as it ensures you're running the same version of Jekyll and Jekyll plugins across different environments.
+Bundler 安装 `Gemfile` 列表中的 gems。使用 `Gemfile` 和 `bundler` 不是必须的，但是强烈推荐使用他们，这可以保证你在不同的环境中运行相同版本的 Jekyll 和 Jekyll 插件。
 
-`gem install bundler` installs [Bundler](https://rubygems.org/gems/bundler). You only need to install it once &mdash; not every time you create a new Jekyll project. Here are some additional details:
+`gem install bundler` 安装 [Bundler](https://rubygems.org/gems/bundler)。你只需要安装一次 &mdash; 不用每次创建新 Jekyll 项目时都安装。下面是一些额外的细节：
 
-If you're using a `Gemfile` you would first run `bundle install` to install the gems, then `bundle exec jekyll serve` to build your site. This guarantees you're using the gem versions set in the `Gemfile`. If you're not using a `Gemfile` you can just run `jekyll serve`.
+如果你正在使用一个 `Gemfile` ，你会首先运行 `bundle install` 来安装 gems，然后 `bundle exec jekyll serve` 来构建你的站点。这保证了你使用的是 `Gemfile` 中设定的 gem 版本。如果你没有使用 `Gemfile`，你可以只运行 `jekyll serve`。
 
-For more information about how to use Bundler in your Jekyll project, this [tutorial](/tutorials/using-jekyll-with-bundler/) should provide answers to the most common questions and explain how to get up and running quickly.
+关于在 Jekyll 项目中使用 Bundler 的多细信息， 本 [教程](/tutorials/using-jekyll-with-bundler/) 提供大部分常见问题的答案，并讲解如何快速启动和运行。
